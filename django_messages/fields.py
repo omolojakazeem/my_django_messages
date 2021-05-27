@@ -7,7 +7,7 @@ from django import forms
 from django.forms import widgets
 from django.utils.translation import ugettext_lazy as _
 
-from django_messages.utils import get_user_model, get_username_field
+from .utils import get_user_model, get_username_field
 
 User = get_user_model()
 
@@ -15,7 +15,7 @@ User = get_user_model()
 class CommaSeparatedUserInput(widgets.Input):
     input_type = 'text'
 
-    def render(self, name, value, **kwargs, renderer=None):
+    def render(self, name, value, renderer=None, **kwargs):
         if value is None:
             value = ''
         elif isinstance(value, (list, tuple)):
